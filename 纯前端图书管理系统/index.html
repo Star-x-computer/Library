@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理系统</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>校园图书管理系统</h1>
+        <div class="top-bar">
+            <div class="view-tabs">
+                <button class="view-btn active" data-view="all">全部图书</button>
+                <button class="view-btn" data-view="borrow">已借出图书</button>
+                <button class="view-btn" data-view="today">今日到期图书</button>
+            </div>
+            <div class="search-area">
+                <input type="text" id="searchInput" placeholder="输入书名检索">
+                <button class="btn-search" id="searchBtn">搜索</button>
+                <button class="btn-add" id="openAdd">新增图书</button>
+            </div>
+        </div>        <!-- 统计面板 -->
+        <div class="stat-box">
+            <div class="stat-card">
+                <h4>图书总数量</h4>
+                <div class="num" id="totalAll">0</div>
+            </div>
+            <div class="stat-card">
+                <h4>在馆图书</h4>
+                <div class="num" id="storeNum">0</div>
+            </div>
+            <div class="stat-card">
+                <h4>已借出图书</h4>
+                <div class="num" id="borrowNum">0</div>
+            </div>
+            <div class="stat-card">
+                <h4>逾期未还</h4>
+                <div class="num" id="overNum">0</div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>存放位置</th>
+                    <th>借阅人</th>
+                    <th>借阅日期</th>
+                    <th>归还日期</th>
+                    <th>借阅天数</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="bookTable"></tbody>
+        </table>
+    </div>
+
+    <div class="mask" id="mask">
+        <div class="dialog">
+            <h3 id="dialogTitle">新增图书</h3>
+            <input type="hidden" id="editId">
+            <div class="form-row">
+                <div class="form-item">
+                    <label>书名</label>
+                    <input type="text" id="bookName">
+                </div>
+                <div class="form-item">
+                    <label>作者</label>
+                    <input type="text" id="author">
+                </div>
+            </div>
+            <div class="form-full">
+                <label>存放位置</label>
+                <input type="text" id="position" placeholder="如：一楼文学区A03">
+            </div>
+            <div class="form-row">
+                <div class="form-item">
+                    <label>借阅人</label>
+                    <input type="text" id="borrowUser">
+                </div>
+                <div class="form-item">
+                    <label>图书状态</label>
+                    <select id="bookStatus">
+                        <option value="在馆">在馆</option>
+                        <option value="已借出">已借出</option>
+                        <option value="逾期未还">逾期未还</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-item">
+                    <label>借阅日期</label>
+                    <input type="date" id="borrowDate">
+                </div>
+                <div class="form-item">
+                    <label>归还日期</label>
+                    <input type="date" id="returnDate">
+                </div>
+            </div>
+            <div class="dialog-btns">
+                <button class="btn-reset" id="resetForm">重置</button>
+                <button class="btn-cancel" id="closeMask">取消</button>
+                <button class="btn-add" id="saveBook">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
